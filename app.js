@@ -1,5 +1,4 @@
 var toDos = [];
-var editIndex = null;
 
 // Add Todo
 function addTodo() {
@@ -41,31 +40,9 @@ function deleteTodo(index) {
 
 // Edit Todo
 function editTodo(index) {
-  var userInput = document.getElementById("todo");
-  var addBtn = document.getElementById("addBtn");
-  var updateBtn = document.getElementById("updateBtn");
-  userInput.value = toDos[index];
-  editIndex = index;
-  addBtn.style.display = "none";
-  updateBtn.style.display = "inline-block";
-}
-
-// updateTodo
-function updateTodo() {
-  var userInput = document.getElementById("todo");
-  var addBtn = document.getElementById("addBtn");
-  var updateBtn = document.getElementById("updateBtn");
-
-  if (userInput.value.trim() === "") {
-    alert("Task cannot be empty!");
-    return;
+  var newValue = prompt("Edit your task:", toDos[index]);
+  if (newValue !== null && newValue.trim() !== "") {
+    toDos[index] = newValue;
+    showTodos();
   }
-
-  toDos[editIndex] = userInput.value;
-  editIndex = null;
-  userInput.value = "";
-  addBtn.style.display = "none";
-  updateBtn.style.display = "inline-block";
-
-  showTodos();
 }
