@@ -14,10 +14,6 @@ function addTodo() {
     return;
   }
 
-  if (!Array.isArray(toDos)) {
-    toDos = [];
-  }
-
   toDos.push(userInput.value);
   localStorage.setItem("toDos", JSON.stringify(toDos))
   userInput.value = "";
@@ -67,5 +63,6 @@ function updateTodo() {
   addButton.style.display = "inline-block";
   showTodos();
 }
+
 
 
