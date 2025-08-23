@@ -1,15 +1,25 @@
-var toDos = [];
+var toDos = JSON.parse(localStorage.getItem("toDos")) || []
+var userInput = document.getElementById("todo");
+var updateButton = document.getElementById("update-btn")
+var addButton = document.getElementById("add-btn")
+
+var indexToEdit = null;
+
+showTodos();
 
 // Add Todo
 function addTodo() {
-  var userInput = document.getElementById("todo");
-
   if (userInput.value.trim() === "") {
     alert("Please Enter Any Task!");
     return;
   }
 
+  if (!Array.isArray(toDos)) {
+    toDos = [];
+  }
+
   toDos.push(userInput.value);
+  localStorage.setItem("toDos", JSON.stringify(toDos))
   userInput.value = "";
   showTodos();
 }
@@ -35,14 +45,27 @@ function showTodos() {
 // Delete Todo
 function deleteTodo(index) {
   toDos.splice(index, 1);
+  localStorage.setItem("toDos", JSON.stringify(toDos));
   showTodos();
 }
 
-// Edit Todo
 function editTodo(index) {
-  var newValue = prompt("Edit your task:", toDos[index]);
-  if (newValue !== null && newValue.trim() !== "") {
-    toDos[index] = newValue;
-    showTodos();
-  }
+  updateBtn.style.display = 'inline-block'
+  addButton.style.display = "none";
+
+  userInput.value = toDos[index];
+  indexToEdit = index;
 }
+
+// Update Todo
+function updateTodo() {
+  toDos[indexToEdit] = userInput.value;
+  localStorage.setItem("toDos", JSON.stringify(toDos));
+
+  userInput.value = "";
+  updateBtn.style.display = "none";
+  addButton.style.display = "inline-block";
+  showTodos();
+}
+
+
