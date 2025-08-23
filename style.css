@@ -1,6 +1,6 @@
     body {
       font-family: Arial, sans-serif;
-      background: #f3f4f6;
+      background: #ccc;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -10,9 +10,10 @@
       background: white;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       width: 500px;
-      margin-top:20px;
+      margin-top: 20px;
+      box-shadow: #ffff 0px 0px 3px 3px;
     }
 
     h2 {
@@ -41,7 +42,7 @@
       font-size: 14px;
       background-color: #44e94a;
       color: #ffff;
-      font-weight:200;
+      font-weight: 300;
     }
 
     .add-btn {
@@ -87,9 +88,33 @@
     .edit-btn {
       background: #039be5;
       color: white;
+      padding: 5px;
     }
 
     .edit-btn:hover {
       background: #0288d1;
+    }
+
+    @media screen and (max-width:634px) {
+      .container {
+        width: 300px;
+        height: 500px;
+        margin-top: 40px;
+      }
+
+      li {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .delete-btn {
+        right: 20px;
+        gap: 10px;
+
+
+      }
+
 
     }
